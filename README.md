@@ -8,10 +8,8 @@
 
 ## 🚀 Live Demo & Deployment
 
-- **GitHub Repository**: `https://github.com/archie1138/web-design-project`
-- **Live Deployed Website**: 
-  - **GitHub Pages**: `https://archie1138.github.io/web-design-project/`
-  - **Vercel / Netlify Alternative**: Direct 1-click import supported with zero-configuration!
+- **Live Deployed Website (Vercel)**: **[https://web-design-project-tau.vercel.app/](https://web-design-project-tau.vercel.app/)**
+- **GitHub Repository**: **[https://github.com/archie1138/web-design-project](https://github.com/archie1138/web-design-project)**
 
 ---
 
