@@ -8,9 +8,9 @@
 
 ## 🚀 Live Demo & Deployment
 
-- **GitHub Repository**: `https://github.com/<YOUR_GITHUB_ID>/k-explore-events` *(Replace with your repo)*
+- **GitHub Repository**: `https://github.com/archie1138/web-design-project`
 - **Live Deployed Website**: 
-  - **GitHub Pages**: `https://<YOUR_GITHUB_ID>.github.io/k-explore-events/`
+  - **GitHub Pages**: `https://archie1138.github.io/web-design-project/`
   - **Vercel / Netlify Alternative**: Direct 1-click import supported with zero-configuration!
 
 ---
@@ -123,7 +123,7 @@ Right-click `index.html` in VS Code and choose **"Open with Live Server"**.
    git add .
    git commit -m "feat: initial commit for K-Explore Events platform"
    git branch -M main
-   git remote add origin https://github.com/<YOUR_GITHUB_ID>/k-explore-events.git
+   git remote add origin https://github.com/archie1138/web-design-project.git
    git push -u origin main
    ```
 2. In your GitHub repository:
@@ -154,3 +154,4 @@ Right-click `index.html` in VS Code and choose **"Open with Live Server"**.
 ---
 
 &copy; 2026 **K-Explore Events** — Designed and Developed for the K Explore Web Designing Challenge.
+
