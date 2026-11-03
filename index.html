@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="K-Explore Events - Discover upcoming tech summits, music fests, workshops, and register instantly with digital passes." />
+  <meta name="keywords" content="events, event management, tech summit, hackathon, workshop, conference, registrations" />
+  <title>K-Explore Events | Responsive Event Management & Discovery</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo" aria-label="K-Explore Events Home">
+        <div class="logo-symbol">K</div>
+        <span>K-Explore <span class="logo-text-highlight">Events</span></span>
+      </a>
+
+      <nav class="nav-links-wrapper" id="nav-links-wrapper" aria-label="Main Navigation">
+        <a href="#featured-section" class="nav-link">Featured</a>
+        <a href="#events-section" class="nav-link">Explore Events</a>
+        <a href="#why-us-section" class="nav-link">Why K-Explore</a>
+        <a href="#footer-section" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- My Registrations Trigger Button -->
+        <button class="btn-my-registrations" id="my-registrations-btn" type="button" title="View your booked event tickets">
+          <span>🎟️ My Tickets</span>
+          <span class="counter-badge" id="registrations-count-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Dark / Light Theme Toggle -->
+        <button class="icon-btn" id="theme-toggle-btn" type="button" aria-label="Toggle dark and light theme">
+          <span id="theme-icon">
+            <!-- Icon injected by JS -->
+          </span>
+        </button>
+
+        <!-- Mobile Drawer Hamburger -->
+        <button class="mobile-menu-btn" id="mobile-nav-toggle" type="button" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Banner Section -->
+    <section class="hero-section">
+      <div class="hero-glow-blob" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-chip">
+            <span>✨ Live Events for 2026</span>
+          </div>
+          <h1 class="hero-title">
+            Discover, Connect &amp; Experience <br />
+            <span class="logo-text-highlight">Unforgettable Moments</span>
+          </h1>
+          <p class="hero-subtitle">
+            Explore industry-leading tech summits, vibrant music festivals, founder hackathons, and immersive creative masterclasses. Reserve your spot with verified digital passes in seconds.
+          </p>
+
+          <div class="hero-cta-group">
+            <button class="btn btn-primary btn-lg" id="hero-explore-btn" type="button">
+              Browse All Events
+            </button>
+            <button class="btn btn-secondary btn-lg" id="hero-register-btn" type="button">
+              Quick Register
+            </button>
+          </div>
+
+          <!-- Hero Metrics & Social Proof -->
+          <div class="hero-stats-row">
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Upcoming Events</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">14K+</span>
+              <span class="stat-label">Happy Attendees</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">99.4%</span>
+              <span class="stat-label">Positive Feedback</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Verified Passes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Events Showcase -->
+    <section class="section" id="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Flagship Featured Events</h2>
+            <p class="section-subtitle">Hand-picked premier experiences with live countdown timers.</p>
+          </div>
+        </div>
+
+        <div class="featured-grid" id="featured-events-wrapper">
+          <!-- Injected dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Events Catalog & Search / Filter Section -->
+    <section class="section" id="events-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Explore All Events</h2>
+            <p class="section-subtitle">Filter by category or search by topic, venue, and speakers.</p>
+          </div>
+          <span class="badge cat-badge" id="events-count-badge">Loading events...</span>
+        </div>
+
+        <!-- Controls: Search & Sort Bar -->
+        <div class="controls-container">
+          <div class="search-and-sort-bar">
+            <div class="search-box-wrapper">
+              <span class="search-icon">🔍</span>
+              <input 
+                type="text" 
+                id="search-input" 
+                class="search-input" 
+                placeholder="Search by event title, tech stack, speaker, or city..." 
+                aria-label="Search events" 
+              />
+              <button class="clear-search-btn" id="clear-search-btn" type="button" aria-label="Clear search input">&times;</button>
+            </div>
+
+            <div class="sort-wrapper">
+              <label for="sort-select" class="visually-hidden" style="display: none;">Sort by</label>
+              <select id="sort-select" class="sort-select" aria-label="Sort events">
+                <option value="date-asc">Date: Happening Soonest</option>
+                <option value="date-desc">Date: Later Dates</option>
+                <option value="name">Event Name: A to Z</option>
+                <option value="seats">Most Seats Available</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Dynamic Category Pills -->
+          <div class="category-pills-row" id="category-pills" role="tablist" aria-label="Filter events by category">
+            <!-- Injected dynamically by app.js -->
+          </div>
+        </div>
+
+        <!-- Responsive Event Cards Grid -->
+        <div class="events-grid" id="events-grid" aria-live="polite">
+          <!-- Injected dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose K-Explore Section -->
+    <section class="section" id="why-us-section" style="background: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 3.5rem;">
+          <div style="max-width: 600px; margin: 0 auto;">
+            <h2 class="section-title">Built for Modern Event Enthusiasts</h2>
+            <p class="section-subtitle">Experience a seamless registration flow backed by reliable client-side state and instant ticketing.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+          <div style="background: var(--surface-card); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+            <div style="font-size: 2.2rem; margin-bottom: 1rem;">⚡</div>
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Zero-Friction Registration</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">Instant real-time form validation ensures rapid sign-up without page refreshes or lost input.</p>
+          </div>
+
+          <div style="background: var(--surface-card); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+            <div style="font-size: 2.2rem; margin-bottom: 1rem;">🎫</div>
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Verifiable Digital Passes</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">Each confirmed registration generates a clean boarding-pass style digital ticket with a unique booking ID and QR code.</p>
+          </div>
+
+          <div style="background: var(--surface-card); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+            <div style="font-size: 2.2rem; margin-bottom: 1rem;">💾</div>
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Local Storage Management</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">Your tickets and dark/light mode preferences are safely stored on your device. Review or cancel anytime.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" id="footer-section">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-symbol">K</div>
+            <span>K-Explore <span class="logo-text-highlight">Events</span></span>
+          </div>
+          <p>Next-generation event discovery and registration platform designed for ambitious developers, creators, and leaders.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#featured-section">Featured Events</a></li>
+            <li><a href="#events-section">All Events Directory</a></li>
+            <li><a href="#why-us-section">Platform Features</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#events-section">Tech &amp; AI</a></li>
+            <li><a href="#events-section">Music Festivals</a></li>
+            <li><a href="#events-section">Founder Hackathons</a></li>
+            <li><a href="#events-section">Design Masterclasses</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Stay Informed</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;">Get early access to tickets and exclusive attendee discounts.</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required aria-label="Email address for newsletter" />
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 K-Explore Events. Designed &amp; Developed with HTML5, CSS3, &amp; JavaScript.</p>
+        <p>Built for the K-Explore Web Designing Task.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MODALS
+       ========================================== -->
+
+  <!-- 1. Event Details Modal -->
+  <div class="modal-overlay" id="event-detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-detail-heading" aria-hidden="true">
+    <div class="modal-backdrop-close" aria-hidden="true"></div>
+    <div class="modal-container modal-container-lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-detail-heading">Event Details &amp; Schedule</h3>
+        <button class="modal-close-btn" type="button" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body" id="event-detail-modal-body">
+        <!-- Injected dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Registration Form Modal -->
+  <div class="modal-overlay" id="registration-modal" role="dialog" aria-modal="true" aria-labelledby="modal-register-heading" aria-hidden="true">
+    <div class="modal-backdrop-close" aria-hidden="true"></div>
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-register-heading">Event Registration</h3>
+        <button class="modal-close-btn" type="button" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="registration-form" novalidate>
+          <!-- Selected Event -->
+          <div class="form-group">
+            <label for="eventSelect" class="form-label">
+              Selected Event <span class="required">*</span>
+            </label>
+            <select id="eventSelect" name="eventSelect" class="form-select" required>
+              <!-- Populated by app.js -->
+            </select>
+            <div class="form-error-msg" role="alert"></div>
+          </div>
+
+          <!-- Participant Full Name -->
+          <div class="form-group">
+            <label for="name" class="form-label">
+              Participant Full Name <span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              class="form-input" 
+              placeholder="e.g. Archit Goyal" 
+              autocomplete="name"
+              required 
+            />
+            <div class="form-error-msg" role="alert"></div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="form-group">
+            <label for="email" class="form-label">
+              Email Address <span class="required">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="e.g. archit@example.com" 
+              autocomplete="email"
+              required 
+            />
+            <div class="form-error-msg" role="alert"></div>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="form-group">
+            <label for="phone" class="form-label">
+              Phone Number <span class="required">*</span>
+            </label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              class="form-input" 
+              placeholder="e.g. 9876543210 (10 digits)" 
+              autocomplete="tel"
+              required 
+            />
+            <div class="form-error-msg" role="alert"></div>
+          </div>
+
+          <!-- Organization / Institution (Optional) -->
+          <div class="form-group">
+            <label for="organization" class="form-label">
+              University / Company Name <span style="color: var(--text-muted); font-size: 0.8rem;">(Optional)</span>
+            </label>
+            <input 
+              type="text" 
+              id="organization" 
+              name="organization" 
+              class="form-input" 
+              placeholder="e.g. KIIT University / Tech Corp" 
+            />
+          </div>
+
+          <!-- Ticket Type -->
+          <div class="form-group">
+            <label for="ticketType" class="form-label">
+              Pass Category <span class="required">*</span>
+            </label>
+            <select id="ticketType" name="ticketType" class="form-select" required>
+              <option value="General Attendee">Standard Attendee Pass</option>
+              <option value="Student Pass">Student Scholar Pass (50% Off Perks)</option>
+              <option value="VIP Delegate">VIP Delegate Access (Front Row + Lounge)</option>
+            </select>
+          </div>
+
+          <!-- Terms Checkbox -->
+          <div class="form-group">
+            <label class="form-checkbox-label" for="terms">
+              <input type="checkbox" id="terms" name="terms" required />
+              <span>I confirm that the submitted details are correct and agree to the event code of conduct and safety regulations.</span>
+            </label>
+            <div class="form-error-msg" role="alert"></div>
+          </div>
+
+          <div style="margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem;" id="submit-registration-btn">
+              Complete Registration &amp; Issue Pass
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Digital Ticket Pass Modal -->
+  <div class="modal-overlay" id="ticket-modal" role="dialog" aria-modal="true" aria-labelledby="modal-ticket-heading" aria-hidden="true">
+    <div class="modal-backdrop-close" aria-hidden="true"></div>
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-ticket-heading">🎉 Registration Confirmed!</h3>
+        <button class="modal-close-btn" type="button" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body" id="ticket-modal-body">
+        <!-- Injected dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. "My Registrations" Drawer Modal -->
+  <div class="modal-overlay" id="my-registrations-modal" role="dialog" aria-modal="true" aria-labelledby="modal-my-reg-heading" aria-hidden="true">
+    <div class="modal-backdrop-close" aria-hidden="true"></div>
+    <div class="modal-container modal-container-lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-my-reg-heading">🎟️ My Booked Tickets &amp; Passes</h3>
+        <button class="modal-close-btn" type="button" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          These registrations are stored securely in your browser's Local Storage. You can view your boarding passes anytime or cancel a booking if your schedule changes.
+        </p>
+        <div id="my-registrations-list">
+          <!-- Injected dynamically by app.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications Container -->
+  <div class="toast-container" id="toast-container" aria-live="assertive" aria-atomic="true"></div>
+
+  <!-- Application Logic (ES Module) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
